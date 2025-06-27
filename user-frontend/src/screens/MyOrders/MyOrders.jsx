@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
-import './myorders.css';
+import './MyOrders.css';
 import { assets } from '../../assets/assets';
 
 const MyOrders = () => {

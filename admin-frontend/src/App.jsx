@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import ProtectedAdminRoute from './Components/ProtectedAdminRoute/ProtectedAdminRoute';
 import './App.css';
 
-const url = "http://localhost:4000";
+const url = "https://hungerhut-backend-bpi5.onrender.com";
 
 const App = () => {
   return (

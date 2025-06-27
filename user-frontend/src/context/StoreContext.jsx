@@ -8,7 +8,7 @@ const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
-  const url = 'http://localhost:4000';
+  const url = 'https://hungerhut-backend-bpi5.onrender.com';
 
   // Fetch food items
   const fetchFoodList = async () => {

@@ -16,7 +16,22 @@ const PORT = process.env.PORT || 4000;
 connectDB();
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  'https://hungerhut.vercel.app',
+  'https://hunger-hut.vercel.app',
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('❌ Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
+
 app.use(express.json()); // for parsing application/json
 
 // Routes

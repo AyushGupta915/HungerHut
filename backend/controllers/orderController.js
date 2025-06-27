@@ -3,7 +3,6 @@ const userModel = require('../models/userModels');
 const stripe = require('stripe')(process.env.STRIPE_KEY); // ✅ Make sure to use your secret key
 
 const placeOrder = async (req, res) => {
-  const userFrontend_url = 'http://localhost:5173';
 
   try {
     // ✅ Create new order
@@ -46,8 +45,9 @@ const placeOrder = async (req, res) => {
       payment_method_types: ['card'],
       line_items,
       mode: 'payment',
-      success_url: `${userFrontend_url}/verify?success=true&orderId=${newOrder._id}`,
-      cancel_url: `${userFrontend_url}/verify?success=false&orderId=${newOrder._id}`
+      success_url: `https://hungerhut.vercel.app/verify?success=true&orderId=${newOrder._id}`,
+      cancel_url: `https://hungerhut.vercel.app/verify?success=false&orderId=${newOrder._id}`,
+
     });
 
     res.json({ sessionurl: session.url });

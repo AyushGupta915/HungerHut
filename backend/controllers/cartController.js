@@ -17,28 +17,31 @@ const addToCart = async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    // Initialize cartData if not present
+    // Initialize cartData as Map if undefined
     if (!user.cartData) {
-      user.cartData = {};
+      user.cartData = new Map();
     }
 
     const cart = user.cartData;
 
-    const currentQty = cart[itemId] || 0;
-    cart[itemId] = currentQty + 1;
+    const currentQty = cart.get(itemId) || 0;
+    cart.set(itemId, currentQty + 1);
 
-    // Save the updated cart back
-    user.cartData = cart;
+    user.markModified('cartData');
     await user.save();
 
-    console.log("✅ Cart updated:", cart);
-    return res.status(200).json({ message: 'Item added to cart', cartData: cart });
+    console.log("✅ Cart updated:", Object.fromEntries(cart));
+    return res.status(200).json({
+      message: 'Item added to cart',
+      cartData: Object.fromEntries(cart),
+    });
 
   } catch (error) {
     console.error('❌ Error in addToCart:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 
 // Remove from Cart
@@ -49,30 +52,31 @@ const removeFromCart = async (req, res) => {
     if (!user) return res.status(404).json({ error: 'User not found' });
 
     const cart = user.cartData;
-
-    if (!itemId) {
-      return res.status(400).json({ error: 'Item ID is required' });
+    if (!cart || !cart.has(itemId)) {
+      return res.status(400).json({ error: 'Item not in cart' });
     }
 
-    if (cart.has(itemId)) {
-      const newQty = cart.get(itemId) - 1;
+    const newQty = cart.get(itemId) - 1;
 
-      if (newQty <= 0) {
-        cart.delete(itemId);
-      } else {
-        cart.set(itemId, newQty);
-      }
-
-      await user.save();
-      return res.status(200).json({ message: 'Item removed from cart', cartData: Object.fromEntries(cart) });
+    if (newQty <= 0) {
+      cart.delete(itemId);
+    } else {
+      cart.set(itemId, newQty);
     }
 
-    return res.status(400).json({ error: 'Item not in cart' });
+    user.markModified('cartData');
+    await user.save();
+
+    return res.status(200).json({
+      message: 'Item removed from cart',
+      cartData: Object.fromEntries(cart),
+    });
   } catch (error) {
     console.error('❌ Error removing from cart:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 // Get Cart
 const getCart = async (req, res) => {
@@ -80,11 +84,13 @@ const getCart = async (req, res) => {
     const user = await userModel.findById(req.userId);
     if (!user) return res.status(404).json({ error: 'User not found' });
 
-    return res.status(200).json({ cartData: Object.fromEntries(user.cartData || new Map()) });
+    const cart = user.cartData || new Map();
+    return res.status(200).json({ cartData: Object.fromEntries(cart) });
   } catch (error) {
     console.error('❌ Error fetching cart:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 };
+  
 
 module.exports = { addToCart, removeFromCart, getCart };

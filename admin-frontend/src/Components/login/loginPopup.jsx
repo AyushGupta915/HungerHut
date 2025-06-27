@@ -14,7 +14,7 @@ const Login = ({ setShowLogin, onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:4000/api/users/admin/login', data);
+      const res = await axios.post('https://hungerhut-backend-bpi5.onrender.com/api/users/admin/login', data);
       if (res.data.token) {
         localStorage.setItem('adminToken', res.data.token);
         onLogin(); // Notify Navbar
