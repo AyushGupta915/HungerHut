@@ -22,9 +22,10 @@ const userSchema = new mongoose.Schema({
     default: 'user',
   },
   cartData: {
-    type: Object,
+    type: Map,
+    of: Number,
     default: {},
-  },
+  }
 });
 
 const userModel = mongoose.models.User || mongoose.model('User', userSchema);
