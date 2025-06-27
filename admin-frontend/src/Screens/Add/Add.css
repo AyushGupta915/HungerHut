@@ -1,0 +1,107 @@
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  padding-left: 350px;
+  min-height: 100vh;
+}
+
+form.flex-col {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-img-upload img {
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  cursor: pointer;
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 20px;
+  object-fit: contain;
+  background-color: #f1f5f9;
+  transition: transform 0.2s ease;
+}
+
+.add-img-upload img:hover {
+  transform: scale(1.03);
+}
+
+input[type='text'],
+textarea,
+select {
+  padding: 12px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background-color: #f9fafb;
+}
+
+input[type='text']:focus,
+textarea:focus,
+select:focus {
+  border-color: #48547E;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.add-category-price {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.add-category,
+.add-price {
+  flex: 1;
+  min-width: 200px;
+}
+
+button.add {
+  padding: 12px 20px;
+  background: #48547E;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button.add:hover {
+  background: #ff6600;
+}
+input[type='number'] {
+  padding: 12px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background-color: #f9fafb;
+}
+
+input[type='number']:focus {
+  border-color: #48547E;
+}

@@ -1,0 +1,354 @@
+.my-orders-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.my-orders-wrapper h2 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 50px;
+  color: #48547E;
+  text-align: center;
+  border-bottom: 3px solid #ff6600;
+  padding-bottom: 15px;
+  display: inline-block;
+  width: 100%;
+}
+
+.my-orders-wrapper > p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 60px;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  border: 2px dashed #ddd;
+}
+
+.order-card {
+  display: grid;
+  grid-template-columns: 80px 2fr 1fr 1fr 1.5fr 1fr;
+  gap: 20px;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.order-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #48547E, #6675A6);
+  transition: width 0.3s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border-color: #ff6600;
+}
+
+.order-card:hover::before {
+  width: 6px;
+  background: linear-gradient(135deg, #ff6600, #ff854d);
+}
+
+.order-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 10px;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.order-card:hover .order-icon {
+  border-color: #ff6600;
+  background-color: rgba(255, 102, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.order-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #48547E;
+  margin: 0;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.order-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ff6600;
+  margin: 0;
+  text-align: center;
+}
+
+.order-quantity {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  margin: 0;
+  text-align: center;
+}
+
+.order-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1rem;
+  margin: 0;
+  color: #48547E;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #27ae60;
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(39, 174, 96, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(39, 174, 96, 0);
+  }
+}
+
+.order-status strong {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.track-btn {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #48547E, #6675A6);
+  color: white;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  justify-self: center;
+  min-width: 120px;
+}
+
+.track-btn:hover {
+  background: linear-gradient(135deg, #ff6600, #ff854d);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 102, 0, 0.4);
+}
+
+.track-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Status variations */
+.order-card[data-status="pending"] .status-dot {
+  background-color: #f39c12;
+}
+
+.order-card[data-status="preparing"] .status-dot {
+  background-color: #3498db;
+}
+
+.order-card[data-status="delivered"] .status-dot {
+  background-color: #27ae60;
+}
+
+.order-card[data-status="cancelled"] .status-dot {
+  background-color: #e74c3c;
+  animation: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .order-card {
+    grid-template-columns: 70px 2fr 1fr 1fr 1.2fr 1fr;
+    gap: 15px;
+    padding: 20px;
+  }
+  
+  .order-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .my-orders-wrapper h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-orders-wrapper {
+    padding: 30px 15px;
+  }
+  
+  .my-orders-wrapper h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .order-card {
+    display: block;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .order-card::before {
+    width: 100%;
+    height: 4px;
+    top: 0;
+    left: 0;
+  }
+  
+  .order-card:hover::before {
+    height: 6px;
+  }
+  
+  .order-icon {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .order-title {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  
+  .order-price {
+    font-size: 1.3rem;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  
+  .order-quantity {
+    text-align: left;
+    margin-bottom: 8px;
+  }
+  
+  .order-status {
+    justify-content: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .track-btn {
+    width: 100%;
+    margin-top: 10px;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .my-orders-wrapper {
+    padding: 20px 10px;
+  }
+  
+  .my-orders-wrapper h2 {
+    font-size: 1.8rem;
+  }
+  
+  .order-card {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .order-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .order-title {
+    font-size: 1rem;
+  }
+  
+  .order-price {
+    font-size: 1.2rem;
+  }
+}
+
+/* Loading state */
+.order-card.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.order-card.loading .track-btn {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Empty state enhancement */
+.my-orders-wrapper > p::before {
+  content: "📦";
+  display: block;
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+/* Focus states for accessibility */
+.track-btn:focus {
+  outline: 2px solid #ff6600;
+  outline-offset: 2px;
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.2s ease;
+}
+
+/* Order card entrance animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.order-card {
+  animation: slideIn 0.3s ease forwards;
+}
+
+.order-card:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+.order-card:nth-child(odd) {
+  animation-delay: 0.2s;
+}
