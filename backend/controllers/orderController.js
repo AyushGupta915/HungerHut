@@ -3,7 +3,7 @@ const userModel = require('../models/userModels');
 const stripe = require('stripe')(process.env.STRIPE_KEY); // ✅ Make sure to use your secret key
 
 const placeOrder = async (req, res) => {
-  const userFrontend_url = 'http://localhost:5173';
+  const userFrontend_url = 'https://hunger-hut.vercel.app';
 
   try {
     // ✅ Create new order
