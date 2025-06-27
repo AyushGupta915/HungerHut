@@ -8,7 +8,7 @@ const Order = () => {
   const fetchOrders = async () => {
   try {
     const token = localStorage.getItem('adminToken');
-    const res = await axios.get('http://localhost:4000/api/admin/orders', {
+    const res = await axios.get('https://hungerhut-backend-bpi5.onrender.com/api/admin/orders', {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -26,7 +26,7 @@ const Order = () => {
       const token = localStorage.getItem('adminToken');
 
       await axios.put(
-        'http://localhost:4000/api/admin/orders/status',
+        'https://hungerhut-backend-bpi5.onrender.com/api/admin/orders/status',
         { orderId, status },
         {
           headers: {
