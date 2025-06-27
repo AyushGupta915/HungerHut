@@ -14,7 +14,7 @@ const VerifyOrders = () => {
     const verifyPayment = async () => {
       try {
         if (success === 'true' && orderId) {
-          await axios.post('http://localhost:4000/api/orders/verify', { orderId });
+          await axios.post('https://hungerhut-backend-bpi5.onrender.com/api/orders/verify', { orderId });
           setMessage('✅ Payment successful! Redirecting to your orders...');
           setTimeout(() => navigate('/myorders'), 2000); // ✅ redirect after short delay
         } else {
