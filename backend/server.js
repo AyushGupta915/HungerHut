@@ -17,7 +17,11 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: 'https://hungerhut-phi.vercel.app',
+  origin: 'https://hungerhut.vercel.app',
+  credentials: true,
+}));
+app.use(cors({
+  origin: 'https://hunger-hut.vercel.app',
   credentials: true,
 }));
 app.use(express.json()); // for parsing application/json
