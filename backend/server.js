@@ -16,7 +16,10 @@ const PORT = process.env.PORT || 4000;
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://hungerhut-phi.vercel.app',
+  credentials: true,
+}));
 app.use(express.json()); // for parsing application/json
 
 // Routes
