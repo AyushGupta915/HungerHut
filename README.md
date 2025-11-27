@@ -1,7 +1,3 @@
-Here is a clean, professional **README.md** for your **HungerHut – Online Food Delivery Service** repository. It includes **setup steps** and **tech stack used**, and you can copy-paste it directly into your repo.
-
----
-
 # 🍽️ **HungerHut – Online Food Delivery Service**
 
 HungerHut is a full-stack online food delivery platform where users can browse restaurants, order food, make payments, and track their orders.
@@ -154,3 +150,31 @@ You can deploy:
 * **Frontend** → Vercel
 * **Backend** → Render, Railway, or Cyclic
 * **Database** → MongoDB Atlas
+
+<p align="center">
+  <img src="./Images/1.png" width="230"/>
+  <img src="./Images/2.png" width="230"/>
+  <img src="./Images/3.png" width="230"/>
+  <img src="./Images/4.png" width="230"/>
+</p>
+
+<p align="center">
+  <img src="./Images/5.png" width="230"/>
+  <img src="./Images/6.png" width="230"/>
+  <img src="./Images/7.png" width="230"/>
+  <img src="./Images/8.png" width="230"/>
+</p>
+
+<p align="center">
+  <img src="./Images/9.png" width="230"/>
+  <img src="./Images/10.png" width="230"/>
+  <img src="./Images/11.png" width="230"/>
+  <img src="./Images/12.png" width="230"/>
+</p>
+
+<p align="center">
+  <img src="./Images/13.png" width="230"/>
+  <img src="./Images/14.png" width="230"/>
+  <img src="./Images/15.png" width="230"/>
+  <img src="./Images/16.png" width="230"/>
+</p>
